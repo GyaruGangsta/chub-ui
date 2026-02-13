@@ -210,3 +210,21 @@ div.abs-100-dvh {
 .ant-list {
     background: #F2F2F7 !important;
 }
+
+/* ===== REMOVE DARK MESSAGE CARD BACKGROUND ===== */
+
+.ant-list-item,
+.ant-list-item-meta-content,
+.ant-list-item-meta {
+    background: transparent !important;
+}
+
+/* Force message row transparent */
+.ant-list-item.alpha-background {
+    background: transparent !important;
+}
+
+/* Force entire chat scroll area light */
+.ant-layout-content {
+    background: #F2F2F7 !important;
+}
