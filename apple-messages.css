@@ -1,90 +1,158 @@
-/* =========================================
-   HARD iOS LIGHT MODE OVERRIDE
-   ========================================= */
+/* ======================================================
+   CHUB AI → iOS MESSAGES (TRUE LIGHT MODE OVERRIDE)
+   Hard override of dark theme + accurate iMessage look
+   ====================================================== */
 
-:root {
-    --ios-bg: #F2F2F7;
-    --ios-grey: #E5E5EA;
-    --ios-blue: #007AFF;
-    --ios-text-dark: #000000;
-    --ios-text-light: #FFFFFF;
-    --ios-divider: #D1D1D6;
-    --ios-radius: 22px;
-    --ios-font: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/* =========================
+   1. OVERRIDE CHUB DARK THEME VARIABLES
+   ========================= */
+
+:root,
+[data-theme="dark"],
+html.dark,
+body.dark {
+    --background-deep: #F2F2F7 !important;
+    --background-deep-alpha: #F2F2F7 !important;
+    --background-primary: #F2F2F7 !important;
+    --background-secondary: #F2F2F7 !important;
+    --background-tertiary: #F2F2F7 !important;
+
+    --text-primary: #000000 !important;
+    --text-secondary: #000000 !important;
 }
 
-/* ===== FORCE PAGE LIGHT ===== */
 
-html, body, #root,
+/* =========================
+   2. FORCE PAGE LIGHT
+   ========================= */
+
+html,
+body,
+#root,
 .ant-layout,
 .ant-layout-content,
-.abs-100-dvh {
-    background: var(--ios-bg) !important;
+.abs-100-dvh,
+.ant-spin-container {
+    background: #F2F2F7 !important;
 }
 
-/* Kill dark card containers */
-.message-full > div > div {
+
+/* Remove dark panel wrappers */
+.chat-area-row,
+.ant-list,
+.ant-card,
+.ant-card-body {
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
 }
 
-/* ===== BASE MESSAGE BUBBLE (ACTUAL CONTENT WRAPPER) ===== */
 
+/* =========================
+   3. REMOVE USERNAMES + AVATARS
+   ========================= */
+
+.ant-list-item-meta-title,
+.ant-list-item-meta-avatar {
+    display: none !important;
+}
+
+
+/* =========================
+   4. RESET MESSAGE ROW
+   ========================= */
+
+.ant-list-item,
 .message-full {
+    background: transparent !important;
+    border: none !important;
     display: flex !important;
     width: 100% !important;
 }
 
+
+/* =========================
+   5. BASE MESSAGE BUBBLE
+   (Targets actual rendered container)
+   ========================= */
+
 .message-full > div {
     max-width: 80% !important;
-    border-radius: var(--ios-radius) !important;
     padding: 10px 14px !important;
+    border-radius: 22px !important;
     margin: 6px 0 !important;
-    font-family: var(--ios-font) !important;
+
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+
     font-size: 1em !important;
     line-height: 1.4 !important;
 }
 
-/* ===== RECEIVED (LEFT) ===== */
+
+/* Ensure nested content inherits properly */
+.message-full > div * {
+    color: inherit !important;
+    font-family: inherit !important;
+}
+
+
+/* =========================
+   6. RECEIVED (LEFT - GREY)
+   ========================= */
 
 .message-full:not(.user) > div {
-    background: var(--ios-grey) !important;
-    color: var(--ios-text-dark) !important;
+    background: #E5E5EA !important;
+    color: #000000 !important;
+
     margin-right: auto !important;
     margin-left: 14px !important;
+
     border-bottom-left-radius: 6px !important;
 }
 
-/* ===== SENT (RIGHT) ===== */
+
+/* =========================
+   7. SENT (RIGHT - BLUE)
+   ========================= */
 
 .message-full.user > div {
-    background: var(--ios-blue) !important;
-    color: var(--ios-text-light) !important;
+    background: #007AFF !important;
+    color: #FFFFFF !important;
+
     margin-left: auto !important;
     margin-right: 14px !important;
+
     border-bottom-right-radius: 6px !important;
 }
 
-/* Fix nested text colors */
+
+/* Force white text inside blue bubble */
 .message-full.user * {
-    color: white !important;
+    color: #FFFFFF !important;
 }
 
-/* ===== REMOVE AVATARS & TITLES ===== */
 
-.ant-list-item-meta-avatar,
-.ant-list-item-meta-title {
-    display: none !important;
+/* =========================
+   8. IMAGE FIX (prevent full-width dark block)
+   ========================= */
+
+.message-full img {
+    border-radius: 12px !important;
+    max-width: 100% !important;
 }
 
-/* ===== INPUT BAR ===== */
+
+/* =========================
+   9. INPUT BAR (iOS STYLE)
+   ========================= */
 
 .ant-layout-footer,
 .chat-input-container {
     background: #FFFFFF !important;
-    border-top: 1px solid var(--ios-divider) !important;
+    border-top: 1px solid #D1D1D6 !important;
+    padding: 8px 12px !important;
 }
 
 .ant-layout-footer form,
@@ -92,9 +160,19 @@ html, body, #root,
     background: #F2F2F7 !important;
     border-radius: 20px !important;
     border: 1px solid #E5E5EA !important;
+    padding: 6px 12px !important;
 }
 
 textarea.ant-input {
     background: transparent !important;
     color: #000000 !important;
+    font-size: 1em !important;
+}
+
+
+/* Send button */
+.ant-btn-primary {
+    background: #007AFF !important;
+    border-radius: 50% !important;
+    border: none !important;
 }
