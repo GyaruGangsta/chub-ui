@@ -1,13 +1,12 @@
 /* =========================================
-   iOS MESSAGES STYLE (Dark Mode)
-   Clean iPhone texting UI for Chub
+   iOS MESSAGES STYLE (LIGHT MODE - ACCURATE)
    ========================================= */
 
-/* ---------- Root Variables ---------- */
 :root {
-    --ios-bg: #000000;
-    --ios-bubble-received: #2C2C2E;
-    --ios-bubble-sent: #0A84FF;
+    --ios-bg: #F2F2F7;                /* App background */
+    --ios-bubble-received: #E5E5EA;   /* Grey bubble */
+    --ios-bubble-sent: #0A84FF;       /* iMessage blue */
+    --ios-text-dark: #000000;
     --ios-text-light: #FFFFFF;
     --ios-meta: #8E8E93;
     --ios-radius: 22px;
@@ -20,29 +19,23 @@ div.abs-100-dvh:not(.ant-row) {
     background: var(--ios-bg) !important;
 }
 
-/* ---------- Remove MSN/Extra Elements ---------- */
+/* Remove usernames + avatars */
 .ant-list-item-meta-title,
 .ant-list-item-meta-avatar {
     display: none !important;
 }
 
-/* Reset row styling */
+/* Clean message rows */
 .ant-list-item.alpha-background,
 .message-full {
     background: transparent !important;
     border: none !important;
 }
 
-/* ---------- Message Container ---------- */
-.ant-list-item-meta {
-    display: flex !important;
-    width: 100% !important;
-}
-
 /* ---------- Base Bubble ---------- */
 .ant-list-item-meta-description {
     font-family: var(--ios-font) !important;
-    font-size: 0.95em !important;
+    font-size: 1em !important;
     line-height: 1.4 !important;
 
     padding: 10px 14px !important;
@@ -52,24 +45,19 @@ div.abs-100-dvh:not(.ant-row) {
     width: fit-content !important;
 
     margin: 4px 0 !important;
-
-    animation: iosPop 0.15s ease-out forwards;
 }
 
-/* Force font inside messages */
-.ant-list-item-meta-description *,
-.ant-list-item-meta-description p,
-.ant-list-item-meta-description span,
-.ant-list-item-meta-description div {
+/* Force text styling */
+.ant-list-item-meta-description * {
     font-family: var(--ios-font) !important;
-    font-size: 0.95em !important;
+    font-size: 1em !important;
     line-height: 1.4 !important;
 }
 
-/* ---------- Received (Left) ---------- */
+/* ---------- Received (Left / Grey) ---------- */
 .message-full:not(.user) .ant-list-item-meta-description {
     background: var(--ios-bubble-received) !important;
-    color: var(--ios-text-light) !important;
+    color: var(--ios-text-dark) !important;
 
     margin-right: auto !important;
     margin-left: 12px !important;
@@ -77,10 +65,10 @@ div.abs-100-dvh:not(.ant-row) {
     border-bottom-left-radius: 6px !important;
 }
 
-/* ---------- Sent (Right) ---------- */
+/* ---------- Sent (Right / Blue) ---------- */
 .message-full.user .ant-list-item-meta-description {
     background: var(--ios-bubble-sent) !important;
-    color: #FFFFFF !important;
+    color: var(--ios-text-light) !important;
 
     margin-left: auto !important;
     margin-right: 12px !important;
@@ -88,43 +76,33 @@ div.abs-100-dvh:not(.ant-row) {
     border-bottom-right-radius: 6px !important;
 }
 
-/* ---------- Input Area ---------- */
+/* ---------- Input Area (Light Mode Accurate) ---------- */
 .ant-layout-footer,
 div.chat-input-container {
-    background: #1C1C1E !important;
-    border-top: 1px solid #2C2C2E !important;
-    padding: 10px 12px !important;
+    background: #FFFFFF !important;
+    border-top: 1px solid #D1D1D6 !important;
+    padding: 8px 12px !important;
 }
 
 .ant-layout-footer form,
 div.chat-input-container form {
-    background: #2C2C2E !important;
+    background: #F2F2F7 !important;
     border-radius: 20px !important;
     padding: 6px 12px !important;
-    border: none !important;
+    border: 1px solid #E5E5EA !important;
 }
 
 textarea.ant-input {
     background: transparent !important;
-    color: white !important;
+    color: #000000 !important;
     font-family: var(--ios-font) !important;
-    font-size: 0.95em !important;
+    font-size: 1em !important;
     resize: none !important;
 }
 
-/* Round send button */
+/* Rounded send button */
 .ant-btn-primary {
     border-radius: 50% !important;
-}
-
-/* ---------- Animation ---------- */
-@keyframes iosPop {
-    0% {
-        opacity: 0;
-        transform: scale(0.95) translateY(4px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+    background: #0A84FF !important;
+    border: none !important;
 }
