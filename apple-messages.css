@@ -1,38 +1,54 @@
 /* =========================================
-   iOS MESSAGES STYLE (LIGHT MODE - ACCURATE)
+   iOS MESSAGES (FORCED LIGHT MODE FIX)
    ========================================= */
 
 :root {
-    --ios-bg: #F2F2F7;                /* App background */
-    --ios-bubble-received: #E5E5EA;   /* Grey bubble */
-    --ios-bubble-sent: #0A84FF;       /* iMessage blue */
+    --ios-bg: #F2F2F7;
+    --ios-bubble-received: #E5E5EA;
+    --ios-bubble-sent: #0A84FF;
     --ios-text-dark: #000000;
     --ios-text-light: #FFFFFF;
-    --ios-meta: #8E8E93;
+    --ios-divider: #D1D1D6;
     --ios-radius: 22px;
     --ios-font: -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* ---------- Background ---------- */
-div.abs-100-dvh:not(.ant-row) {
+/* ===== FORCE REMOVE DARK BACKGROUNDS ===== */
+
+html,
+body,
+.ant-layout,
+.ant-layout-content,
+.abs-100-dvh,
+#root {
     background: var(--ios-bg) !important;
 }
 
-/* Remove usernames + avatars */
+/* Remove black chat panel */
+.chat-area-row,
+.ant-list,
+.ant-spin-container {
+    background: transparent !important;
+}
+
+/* ===== REMOVE USERNAMES + AVATARS ===== */
+
 .ant-list-item-meta-title,
 .ant-list-item-meta-avatar {
     display: none !important;
 }
 
-/* Clean message rows */
-.ant-list-item.alpha-background,
+/* ===== MESSAGE ROW RESET ===== */
+
+.ant-list-item,
 .message-full {
     background: transparent !important;
     border: none !important;
 }
 
-/* ---------- Base Bubble ---------- */
+/* ===== BASE BUBBLE ===== */
+
 .ant-list-item-meta-description {
     font-family: var(--ios-font) !important;
     font-size: 1em !important;
@@ -41,51 +57,53 @@ div.abs-100-dvh:not(.ant-row) {
     padding: 10px 14px !important;
     border-radius: var(--ios-radius) !important;
 
-    max-width: 75% !important;
+    max-width: 80% !important;
     width: fit-content !important;
 
     margin: 4px 0 !important;
 }
 
-/* Force text styling */
+/* Force text color correction */
 .ant-list-item-meta-description * {
     font-family: var(--ios-font) !important;
-    font-size: 1em !important;
-    line-height: 1.4 !important;
+    color: inherit !important;
 }
 
-/* ---------- Received (Left / Grey) ---------- */
+/* ===== RECEIVED (LEFT GREY) ===== */
+
 .message-full:not(.user) .ant-list-item-meta-description {
     background: var(--ios-bubble-received) !important;
     color: var(--ios-text-dark) !important;
 
     margin-right: auto !important;
-    margin-left: 12px !important;
+    margin-left: 14px !important;
 
     border-bottom-left-radius: 6px !important;
 }
 
-/* ---------- Sent (Right / Blue) ---------- */
+/* ===== SENT (RIGHT BLUE) ===== */
+
 .message-full.user .ant-list-item-meta-description {
     background: var(--ios-bubble-sent) !important;
     color: var(--ios-text-light) !important;
 
     margin-left: auto !important;
-    margin-right: 12px !important;
+    margin-right: 14px !important;
 
     border-bottom-right-radius: 6px !important;
 }
 
-/* ---------- Input Area (Light Mode Accurate) ---------- */
+/* ===== INPUT BAR FIX ===== */
+
 .ant-layout-footer,
-div.chat-input-container {
+.chat-input-container {
     background: #FFFFFF !important;
-    border-top: 1px solid #D1D1D6 !important;
+    border-top: 1px solid var(--ios-divider) !important;
     padding: 8px 12px !important;
 }
 
 .ant-layout-footer form,
-div.chat-input-container form {
+.chat-input-container form {
     background: #F2F2F7 !important;
     border-radius: 20px !important;
     padding: 6px 12px !important;
@@ -96,13 +114,11 @@ textarea.ant-input {
     background: transparent !important;
     color: #000000 !important;
     font-family: var(--ios-font) !important;
-    font-size: 1em !important;
-    resize: none !important;
 }
 
-/* Rounded send button */
+/* Send button */
 .ant-btn-primary {
     border-radius: 50% !important;
-    background: #0A84FF !important;
+    background: var(--ios-bubble-sent) !important;
     border: none !important;
 }
