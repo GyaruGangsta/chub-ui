@@ -1,11 +1,11 @@
 /* =========================================
-   iOS MESSAGES (FORCED LIGHT MODE FIX)
+   HARD iOS LIGHT MODE OVERRIDE
    ========================================= */
 
 :root {
     --ios-bg: #F2F2F7;
-    --ios-bubble-received: #E5E5EA;
-    --ios-bubble-sent: #0A84FF;
+    --ios-grey: #E5E5EA;
+    --ios-blue: #007AFF;
     --ios-text-dark: #000000;
     --ios-text-light: #FFFFFF;
     --ios-divider: #D1D1D6;
@@ -14,111 +14,87 @@
         "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* ===== FORCE REMOVE DARK BACKGROUNDS ===== */
+/* ===== FORCE PAGE LIGHT ===== */
 
-html,
-body,
+html, body, #root,
 .ant-layout,
 .ant-layout-content,
-.abs-100-dvh,
-#root {
+.abs-100-dvh {
     background: var(--ios-bg) !important;
 }
 
-/* Remove black chat panel */
-.chat-area-row,
-.ant-list,
-.ant-spin-container {
+/* Kill dark card containers */
+.message-full > div > div {
     background: transparent !important;
-}
-
-/* ===== REMOVE USERNAMES + AVATARS ===== */
-
-.ant-list-item-meta-title,
-.ant-list-item-meta-avatar {
-    display: none !important;
-}
-
-/* ===== MESSAGE ROW RESET ===== */
-
-.ant-list-item,
-.message-full {
-    background: transparent !important;
+    box-shadow: none !important;
     border: none !important;
 }
 
-/* ===== BASE BUBBLE ===== */
+/* ===== BASE MESSAGE BUBBLE (ACTUAL CONTENT WRAPPER) ===== */
 
-.ant-list-item-meta-description {
+.message-full {
+    display: flex !important;
+    width: 100% !important;
+}
+
+.message-full > div {
+    max-width: 80% !important;
+    border-radius: var(--ios-radius) !important;
+    padding: 10px 14px !important;
+    margin: 6px 0 !important;
     font-family: var(--ios-font) !important;
     font-size: 1em !important;
     line-height: 1.4 !important;
-
-    padding: 10px 14px !important;
-    border-radius: var(--ios-radius) !important;
-
-    max-width: 80% !important;
-    width: fit-content !important;
-
-    margin: 4px 0 !important;
 }
 
-/* Force text color correction */
-.ant-list-item-meta-description * {
-    font-family: var(--ios-font) !important;
-    color: inherit !important;
-}
+/* ===== RECEIVED (LEFT) ===== */
 
-/* ===== RECEIVED (LEFT GREY) ===== */
-
-.message-full:not(.user) .ant-list-item-meta-description {
-    background: var(--ios-bubble-received) !important;
+.message-full:not(.user) > div {
+    background: var(--ios-grey) !important;
     color: var(--ios-text-dark) !important;
-
     margin-right: auto !important;
     margin-left: 14px !important;
-
     border-bottom-left-radius: 6px !important;
 }
 
-/* ===== SENT (RIGHT BLUE) ===== */
+/* ===== SENT (RIGHT) ===== */
 
-.message-full.user .ant-list-item-meta-description {
-    background: var(--ios-bubble-sent) !important;
+.message-full.user > div {
+    background: var(--ios-blue) !important;
     color: var(--ios-text-light) !important;
-
     margin-left: auto !important;
     margin-right: 14px !important;
-
     border-bottom-right-radius: 6px !important;
 }
 
-/* ===== INPUT BAR FIX ===== */
+/* Fix nested text colors */
+.message-full.user * {
+    color: white !important;
+}
+
+/* ===== REMOVE AVATARS & TITLES ===== */
+
+.ant-list-item-meta-avatar,
+.ant-list-item-meta-title {
+    display: none !important;
+}
+
+/* ===== INPUT BAR ===== */
 
 .ant-layout-footer,
 .chat-input-container {
     background: #FFFFFF !important;
     border-top: 1px solid var(--ios-divider) !important;
-    padding: 8px 12px !important;
 }
 
 .ant-layout-footer form,
 .chat-input-container form {
     background: #F2F2F7 !important;
     border-radius: 20px !important;
-    padding: 6px 12px !important;
     border: 1px solid #E5E5EA !important;
 }
 
 textarea.ant-input {
     background: transparent !important;
     color: #000000 !important;
-    font-family: var(--ios-font) !important;
-}
-
-/* Send button */
-.ant-btn-primary {
-    border-radius: 50% !important;
-    background: var(--ios-bubble-sent) !important;
-    border: none !important;
 }
