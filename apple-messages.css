@@ -1,0 +1,130 @@
+/* =========================================
+   iOS MESSAGES STYLE (Dark Mode)
+   Clean iPhone texting UI for Chub
+   ========================================= */
+
+/* ---------- Root Variables ---------- */
+:root {
+    --ios-bg: #000000;
+    --ios-bubble-received: #2C2C2E;
+    --ios-bubble-sent: #0A84FF;
+    --ios-text-light: #FFFFFF;
+    --ios-meta: #8E8E93;
+    --ios-radius: 22px;
+    --ios-font: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ---------- Background ---------- */
+div.abs-100-dvh:not(.ant-row) {
+    background: var(--ios-bg) !important;
+}
+
+/* ---------- Remove MSN/Extra Elements ---------- */
+.ant-list-item-meta-title,
+.ant-list-item-meta-avatar {
+    display: none !important;
+}
+
+/* Reset row styling */
+.ant-list-item.alpha-background,
+.message-full {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* ---------- Message Container ---------- */
+.ant-list-item-meta {
+    display: flex !important;
+    width: 100% !important;
+}
+
+/* ---------- Base Bubble ---------- */
+.ant-list-item-meta-description {
+    font-family: var(--ios-font) !important;
+    font-size: 0.95em !important;
+    line-height: 1.4 !important;
+
+    padding: 10px 14px !important;
+    border-radius: var(--ios-radius) !important;
+
+    max-width: 75% !important;
+    width: fit-content !important;
+
+    margin: 4px 0 !important;
+
+    animation: iosPop 0.15s ease-out forwards;
+}
+
+/* Force font inside messages */
+.ant-list-item-meta-description *,
+.ant-list-item-meta-description p,
+.ant-list-item-meta-description span,
+.ant-list-item-meta-description div {
+    font-family: var(--ios-font) !important;
+    font-size: 0.95em !important;
+    line-height: 1.4 !important;
+}
+
+/* ---------- Received (Left) ---------- */
+.message-full:not(.user) .ant-list-item-meta-description {
+    background: var(--ios-bubble-received) !important;
+    color: var(--ios-text-light) !important;
+
+    margin-right: auto !important;
+    margin-left: 12px !important;
+
+    border-bottom-left-radius: 6px !important;
+}
+
+/* ---------- Sent (Right) ---------- */
+.message-full.user .ant-list-item-meta-description {
+    background: var(--ios-bubble-sent) !important;
+    color: #FFFFFF !important;
+
+    margin-left: auto !important;
+    margin-right: 12px !important;
+
+    border-bottom-right-radius: 6px !important;
+}
+
+/* ---------- Input Area ---------- */
+.ant-layout-footer,
+div.chat-input-container {
+    background: #1C1C1E !important;
+    border-top: 1px solid #2C2C2E !important;
+    padding: 10px 12px !important;
+}
+
+.ant-layout-footer form,
+div.chat-input-container form {
+    background: #2C2C2E !important;
+    border-radius: 20px !important;
+    padding: 6px 12px !important;
+    border: none !important;
+}
+
+textarea.ant-input {
+    background: transparent !important;
+    color: white !important;
+    font-family: var(--ios-font) !important;
+    font-size: 0.95em !important;
+    resize: none !important;
+}
+
+/* Round send button */
+.ant-btn-primary {
+    border-radius: 50% !important;
+}
+
+/* ---------- Animation ---------- */
+@keyframes iosPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
