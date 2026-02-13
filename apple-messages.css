@@ -1,178 +1,197 @@
-/* ======================================================
-   CHUB AI → iOS MESSAGES (TRUE LIGHT MODE OVERRIDE)
-   Hard override of dark theme + accurate iMessage look
-   ====================================================== */
+/*
+   APPLE iMESSAGE LIGHT THEME
+   True iOS Messages (Light Mode)
+*/
 
-
-/* =========================
-   1. OVERRIDE CHUB DARK THEME VARIABLES
-   ========================= */
+/* =========================================
+   1. GLOBAL iOS LIGHT FOUNDATION
+   ========================================= */
 
 :root,
-[data-theme="dark"],
-html.dark,
-body.dark {
-    --background-deep: #F2F2F7 !important;
-    --background-deep-alpha: #F2F2F7 !important;
-    --background-primary: #F2F2F7 !important;
-    --background-secondary: #F2F2F7 !important;
-    --background-tertiary: #F2F2F7 !important;
-
-    --text-primary: #000000 !important;
-    --text-secondary: #000000 !important;
-}
-
-
-/* =========================
-   2. FORCE PAGE LIGHT
-   ========================= */
-
 html,
 body,
 #root,
-.ant-layout,
+div.abs-100-dvh {
+    background: #F2F2F7 !important;
+    background-color: #F2F2F7 !important;
+
+    --background-deep: #F2F2F7 !important;
+    --background-deep-alpha: #F2F2F7 !important;
+    --background-primary: #FFFFFF !important;
+    --background-secondary: #FFFFFF !important;
+    --background-tertiary: #FFFFFF !important;
+
+    --text-primary: #000000 !important;
+    --text-secondary: #8E8E93 !important;
+}
+
+/* Remove dark gradients / wallpapers */
+div.abs-100-dvh:not(.ant-row) {
+    background-image: none !important;
+}
+
+/* Main chat area */
 .ant-layout-content,
-.abs-100-dvh,
-.ant-spin-container {
+.ant-list,
+#chat-messages {
     background: #F2F2F7 !important;
 }
 
+/* =========================================
+   2. HEADER (Clean iOS Look)
+   ========================================= */
 
-/* Remove dark panel wrappers */
-.chat-area-row,
-.ant-list,
-.ant-card,
-.ant-card-body {
-    background: transparent !important;
+div.ant-row.ant-row-center {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #D1D1D6 !important;
+}
+
+div.ant-row.ant-row-center *,
+div.ant-row.ant-row-center span,
+div.ant-row.ant-row-center div,
+div.ant-row.ant-row-center a {
+    color: #000000 !important;
+    text-shadow: none !important;
+}
+
+/* Avatar clean circle */
+.ant-list-item-meta-avatar img,
+.ant-list-item-meta-avatar .ant-avatar {
+    border-radius: 50% !important;
+    padding: 0 !important;
+    background: none !important;
     box-shadow: none !important;
-    border: none !important;
+    outline: none !important;
 }
 
+/* =========================================
+   3. MESSAGE ROW RESET
+   ========================================= */
 
-/* =========================
-   3. REMOVE USERNAMES + AVATARS
-   ========================= */
-
-.ant-list-item-meta-title,
-.ant-list-item-meta-avatar {
-    display: none !important;
-}
-
-
-/* =========================
-   4. RESET MESSAGE ROW
-   ========================= */
-
-.ant-list-item,
+.ant-list-item.alpha-background,
 .message-full {
     background: transparent !important;
     border: none !important;
+}
+
+.ant-list-item-meta {
     display: flex !important;
-    width: 100% !important;
+    align-items: flex-end !important;
 }
 
+/* =========================================
+   4. BUBBLES (TRUE iOS VALUES)
+   ========================================= */
 
-/* =========================
-   5. BASE MESSAGE BUBBLE
-   (Targets actual rendered container)
-   ========================= */
-
-.message-full > div {
-    max-width: 80% !important;
+/* Base bubble */
+.ant-list-item-meta-description {
+    max-width: 75% !important;
     padding: 10px 14px !important;
-    border-radius: 22px !important;
-    margin: 6px 0 !important;
-
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-
-    font-size: 1em !important;
+    border-radius: 18px !important;
+    font-size: 0.95em !important;
     line-height: 1.4 !important;
+    box-shadow: none !important;
+    border: none !important;
+    animation: iosFade 0.15s ease-out forwards;
 }
 
-
-/* Ensure nested content inherits properly */
-.message-full > div * {
-    color: inherit !important;
-    font-family: inherit !important;
-}
-
-
-/* =========================
-   6. RECEIVED (LEFT - GREY)
-   ========================= */
-
-.message-full:not(.user) > div {
+/* RECEIVED (grey) */
+.ant-list-item-meta-description {
     background: #E5E5EA !important;
     color: #000000 !important;
-
-    margin-right: auto !important;
-    margin-left: 14px !important;
-
-    border-bottom-left-radius: 6px !important;
+    margin-left: 8px !important;
 }
 
-
-/* =========================
-   7. SENT (RIGHT - BLUE)
-   ========================= */
-
-.message-full.user > div {
+/* SENT (blue) */
+.ant-list-item-meta-description.user-message,
+.message-full.user .ant-list-item-meta-description {
     background: #007AFF !important;
     color: #FFFFFF !important;
-
     margin-left: auto !important;
-    margin-right: 14px !important;
-
-    border-bottom-right-radius: 6px !important;
+    margin-right: 8px !important;
 }
 
-
-/* Force white text inside blue bubble */
-.message-full.user * {
-    color: #FFFFFF !important;
-}
-
-
-/* =========================
-   8. IMAGE FIX (prevent full-width dark block)
-   ========================= */
-
-.message-full img {
-    border-radius: 12px !important;
-    max-width: 100% !important;
-}
-
-
-/* =========================
-   9. INPUT BAR (iOS STYLE)
-   ========================= */
-
-.ant-layout-footer,
-.chat-input-container {
-    background: #FFFFFF !important;
-    border-top: 1px solid #D1D1D6 !important;
-    padding: 8px 12px !important;
-}
-
-.ant-layout-footer form,
-.chat-input-container form {
-    background: #F2F2F7 !important;
-    border-radius: 20px !important;
-    border: 1px solid #E5E5EA !important;
-    padding: 6px 12px !important;
-}
-
-textarea.ant-input {
-    background: transparent !important;
-    color: #000000 !important;
+/* Text inside bubbles */
+.ant-list-item-meta-description *,
+.ant-list-item-meta-description p,
+.ant-list-item-meta-description span {
+    color: inherit !important;
     font-size: 1em !important;
 }
 
+/* =========================================
+   5. USERNAME + META (Minimal iOS)
+   ========================================= */
 
-/* Send button */
-.ant-btn-primary {
-    background: #007AFF !important;
-    border-radius: 50% !important;
+.ant-list-item-meta-title,
+.ant-list-item-meta-title a {
+    font-size: 0.75em !important;
+    font-weight: 500 !important;
+    color: #8E8E93 !important;
+    margin-bottom: 4px !important;
+}
+
+/* =========================================
+   6. INPUT AREA (iOS STYLE)
+   ========================================= */
+
+.ant-layout-footer,
+div.chat-input-container,
+div[class*="input-container"] {
+    background: #FFFFFF !important;
+    border-top: 1px solid #D1D1D6 !important;
+    padding: 10px 12px !important;
+}
+
+/* Input wrapper */
+.ant-layout-footer form,
+div.chat-input-container form {
+    background: #F2F2F7 !important;
+    border-radius: 20px !important;
+    padding: 6px 12px !important;
+    border: 1px solid #D1D1D6 !important;
+    box-shadow: none !important;
+}
+
+/* Textarea */
+textarea.ant-input {
+    background: transparent !important;
     border: none !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+    font-size: 0.95em !important;
+}
+
+textarea.ant-input:focus {
+    outline: none !important;
+}
+
+/* =========================================
+   7. TOOL BUTTONS CLEANUP
+   ========================================= */
+
+div.message-control-buttons button {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #8E8E93 !important;
+}
+
+div.message-control-buttons button:hover {
+    color: #007AFF !important;
+}
+
+/* =========================================
+   8. ANIMATION (SUBTLE iOS)
+   ========================================= */
+
+@keyframes iosFade {
+    0% {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
