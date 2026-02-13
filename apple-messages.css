@@ -195,3 +195,18 @@ div.message-control-buttons button:hover {
         transform: translateY(0);
     }
 }
+
+/* ===== FORCE VIEWPORT LIGHT ===== */
+
+div.abs-100-dvh {
+    background: #F2F2F7 !important;
+    background-color: #F2F2F7 !important;
+    background-image: none !important;
+}
+
+/* Force layout wrappers */
+.ant-layout,
+.ant-layout-content,
+.ant-list {
+    background: #F2F2F7 !important;
+}
