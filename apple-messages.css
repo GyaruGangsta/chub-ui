@@ -1,230 +1,110 @@
-/*
-   APPLE iMESSAGE LIGHT THEME
-   True iOS Messages (Light Mode)
-*/
-
 /* =========================================
-   1. GLOBAL iOS LIGHT FOUNDATION
+   iOS Messages – Full Force Light Mode
    ========================================= */
 
-:root,
-html,
-body,
-#root,
-div.abs-100-dvh {
-    background: #F2F2F7 !important;
-    background-color: #F2F2F7 !important;
 
-    --background-deep: #F2F2F7 !important;
-    --background-deep-alpha: #F2F2F7 !important;
-    --background-primary: #FFFFFF !important;
-    --background-secondary: #FFFFFF !important;
-    --background-tertiary: #FFFFFF !important;
+/* ===== GLOBAL LIGHT BACKGROUND ===== */
 
-    --text-primary: #000000 !important;
-    --text-secondary: #8E8E93 !important;
-}
-
-/* Remove dark gradients / wallpapers */
-div.abs-100-dvh:not(.ant-row) {
-    background-image: none !important;
-}
-
-/* Main chat area */
-.ant-layout-content,
-.ant-list,
-#chat-messages {
-    background: #F2F2F7 !important;
-}
-
-/* =========================================
-   2. HEADER (Clean iOS Look)
-   ========================================= */
-
-div.ant-row.ant-row-center {
-    background: #FFFFFF !important;
-    border-bottom: 1px solid #D1D1D6 !important;
-}
-
-div.ant-row.ant-row-center *,
-div.ant-row.ant-row-center span,
-div.ant-row.ant-row-center div,
-div.ant-row.ant-row-center a {
-    color: #000000 !important;
-    text-shadow: none !important;
-}
-
-/* Avatar clean circle */
-.ant-list-item-meta-avatar img,
-.ant-list-item-meta-avatar .ant-avatar {
-    border-radius: 50% !important;
-    padding: 0 !important;
-    background: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-/* =========================================
-   3. MESSAGE ROW RESET
-   ========================================= */
-
-.ant-list-item.alpha-background,
-.message-full {
-    background: transparent !important;
-    border: none !important;
-}
-
-.ant-list-item-meta {
-    display: flex !important;
-    align-items: flex-end !important;
-}
-
-/* =========================================
-   4. BUBBLES (TRUE iOS VALUES)
-   ========================================= */
-
-/* Base bubble */
-.ant-list-item-meta-description {
-    max-width: 75% !important;
-    padding: 10px 14px !important;
-    border-radius: 18px !important;
-    font-size: 0.95em !important;
-    line-height: 1.4 !important;
-    box-shadow: none !important;
-    border: none !important;
-    animation: iosFade 0.15s ease-out forwards;
-}
-
-/* RECEIVED (grey) */
-.ant-list-item-meta-description {
-    background: #E5E5EA !important;
-    color: #000000 !important;
-    margin-left: 8px !important;
-}
-
-/* SENT (blue) */
-.ant-list-item-meta-description.user-message,
-.message-full.user .ant-list-item-meta-description {
-    background: #007AFF !important;
-    color: #FFFFFF !important;
-    margin-left: auto !important;
-    margin-right: 8px !important;
-}
-
-/* Text inside bubbles */
-.ant-list-item-meta-description *,
-.ant-list-item-meta-description p,
-.ant-list-item-meta-description span {
-    color: inherit !important;
-    font-size: 1em !important;
-}
-
-/* =========================================
-   5. USERNAME + META (Minimal iOS)
-   ========================================= */
-
-.ant-list-item-meta-title,
-.ant-list-item-meta-title a {
-    font-size: 0.75em !important;
-    font-weight: 500 !important;
-    color: #8E8E93 !important;
-    margin-bottom: 4px !important;
-}
-
-/* =========================================
-   6. INPUT AREA (iOS STYLE)
-   ========================================= */
-
-.ant-layout-footer,
-div.chat-input-container,
-div[class*="input-container"] {
-    background: #FFFFFF !important;
-    border-top: 1px solid #D1D1D6 !important;
-    padding: 10px 12px !important;
-}
-
-/* Input wrapper */
-.ant-layout-footer form,
-div.chat-input-container form {
-    background: #F2F2F7 !important;
-    border-radius: 20px !important;
-    padding: 6px 12px !important;
-    border: 1px solid #D1D1D6 !important;
-    box-shadow: none !important;
-}
-
-/* Textarea */
-textarea.ant-input {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: #000000 !important;
-    font-size: 0.95em !important;
-}
-
-textarea.ant-input:focus {
-    outline: none !important;
-}
-
-/* =========================================
-   7. TOOL BUTTONS CLEANUP
-   ========================================= */
-
-div.message-control-buttons button {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: #8E8E93 !important;
-}
-
-div.message-control-buttons button:hover {
-    color: #007AFF !important;
-}
-
-/* =========================================
-   8. ANIMATION (SUBTLE iOS)
-   ========================================= */
-
-@keyframes iosFade {
-    0% {
-        opacity: 0;
-        transform: translateY(4px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===== FORCE VIEWPORT LIGHT ===== */
-
-div.abs-100-dvh {
-    background: #F2F2F7 !important;
-    background-color: #F2F2F7 !important;
-    background-image: none !important;
-}
-
-/* Force layout wrappers */
+html, body, #root,
 .ant-layout,
-.ant-layout-content,
-.ant-list {
-    background: #F2F2F7 !important;
-}
-
-/* ===== REMOVE DARK MESSAGE CARD BACKGROUND ===== */
-
-.ant-list-item,
-.ant-list-item-meta-content,
-.ant-list-item-meta {
-    background: transparent !important;
-}
-
-/* Force message row transparent */
-.ant-list-item.alpha-background {
-    background: transparent !important;
-}
-
-/* Force entire chat scroll area light */
 .ant-layout-content {
     background: #F2F2F7 !important;
+}
+
+
+/* ===== REMOVE DARK CARDS ===== */
+
+.ant-list-item,
+.ant-list-item-meta,
+.ant-list-item-meta-content,
+.ant-list-item-meta-description,
+[class^="sc-"] {
+    background: transparent !important;
+    border: none !important;
+}
+
+
+/* ===== RESET MESSAGE ROW ===== */
+
+.ant-list-item {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 6px 12px !important;
+}
+
+
+/* ===== BUBBLE BASE STYLE ===== */
+
+.msg-mkdn-container {
+    padding: 10px 14px !important;
+    border-radius: 18px !important;
+    max-width: 75% !important;
+    word-wrap: break-word !important;
+    box-shadow: none !important;
+}
+
+
+/* ===== BOT MESSAGE (LEFT GREY) ===== */
+
+.ant-list-item:nth-child(odd) .msg-mkdn-container {
+    align-self: flex-start !important;
+    background: #E5E5EA !important;
+    color: #000000 !important;
+}
+
+
+/* ===== USER MESSAGE (RIGHT BLUE) ===== */
+
+.ant-list-item:nth-child(even) .msg-mkdn-container {
+    align-self: flex-end !important;
+    background: #007AFF !important;
+    color: #FFFFFF !important;
+}
+
+
+/* ===== LINKS INSIDE BUBBLES ===== */
+
+.msg-mkdn-container a {
+    color: inherit !important;
+}
+
+
+/* ===== REMOVE DARK TITLE TEXT ===== */
+
+.message-title,
+.message-title a {
+    color: #000000 !important;
+}
+
+
+/* ===== REMOVE INLINE WHITE TEXT ===== */
+
+[style*="rgba(255, 255, 255"] {
+    color: #000000 !important;
+}
+
+
+/* ===== IMAGES ===== */
+
+.msg-mkdn-container img {
+    max-width: 100% !important;
+    border-radius: 12px !important;
+}
+
+
+/* ===== INPUT BAR LIGHT ===== */
+
+.ant-input,
+.ant-input-affix-wrapper {
+    background: #FFFFFF !important;
+    border-radius: 20px !important;
+    border: 1px solid #D1D1D6 !important;
+    color: #000 !important;
+}
+
+
+/* ===== BUTTONS CLEAN ===== */
+
+.ant-btn {
+    border-radius: 50% !important;
 }
