@@ -1,110 +1,74 @@
-/* =========================================
-   iOS Messages – Full Force Light Mode
-   ========================================= */
-
-
-/* ===== GLOBAL LIGHT BACKGROUND ===== */
-
-html, body, #root,
-.ant-layout,
-.ant-layout-content {
-    background: #F2F2F7 !important;
-}
-
-
-/* ===== REMOVE DARK CARDS ===== */
-
-.ant-list-item,
-.ant-list-item-meta,
-.ant-list-item-meta-content,
-.ant-list-item-meta-description,
-[class^="sc-"] {
-    background: transparent !important;
-    border: none !important;
-}
-
-
-/* ===== RESET MESSAGE ROW ===== */
-
-.ant-list-item {
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 6px 12px !important;
-}
-
-
-/* ===== BUBBLE BASE STYLE ===== */
-
-.msg-mkdn-container {
-    padding: 10px 14px !important;
+/* === Message Bubble Styling === */
+.ant-list-item-meta-description .msg-mkdn-container {
+    display: inline-block !important;
+    max-width: 80% !important;
+    padding: 0.6rem 1rem !important;
     border-radius: 18px !important;
-    max-width: 75% !important;
-    word-wrap: break-word !important;
-    box-shadow: none !important;
+    margin: 0.3rem 0 !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.3 !important;
 }
 
-
-/* ===== BOT MESSAGE (LEFT GREY) ===== */
-
-.ant-list-item:nth-child(odd) .msg-mkdn-container {
-    align-self: flex-start !important;
-    background: #E5E5EA !important;
-    color: #000000 !important;
+/* Default bubble color for bot / left-aligned */
+.ant-list-item-meta-description .msg-mkdn-container {
+    background-color: #e5e5ea !important; /* light grey */
+    color: #000 !important;
+    text-align: left !important;
+    margin-left: 0.5rem !important;
+    margin-right: auto !important;
 }
 
-
-/* ===== USER MESSAGE (RIGHT BLUE) ===== */
-
-.ant-list-item:nth-child(even) .msg-mkdn-container {
-    align-self: flex-end !important;
-    background: #007AFF !important;
-    color: #FFFFFF !important;
+/* User bubble color / right-aligned (override manually if you find selector) */
+.ant-list-item-meta-description.user .msg-mkdn-container {
+    background-color: #0078ff !important; /* blue */
+    color: #fff !important;
+    text-align: left !important;
+    margin-left: auto !important;
+    margin-right: 0.5rem !important;
+    border-radius: 18px 18px 0 18px !important;
 }
 
-
-/* ===== LINKS INSIDE BUBBLES ===== */
-
-.msg-mkdn-container a {
-    color: inherit !important;
-}
-
-
-/* ===== REMOVE DARK TITLE TEXT ===== */
-
-.message-title,
-.message-title a {
-    color: #000000 !important;
-}
-
-
-/* ===== REMOVE INLINE WHITE TEXT ===== */
-
-[style*="rgba(255, 255, 255"] {
-    color: #000000 !important;
-}
-
-
-/* ===== IMAGES ===== */
-
+/* === Images inside messages === */
 .msg-mkdn-container img {
     max-width: 100% !important;
     border-radius: 12px !important;
+    margin: 0.3rem 0 !important;
+    display: block !important;
 }
 
-
-/* ===== INPUT BAR LIGHT ===== */
-
-.ant-input,
-.ant-input-affix-wrapper {
-    background: #FFFFFF !important;
-    border-radius: 20px !important;
-    border: 1px solid #D1D1D6 !important;
-    color: #000 !important;
+/* === Emphasis / italics === */
+.msg-mkdn-container em {
+    font-style: italic !important;
+    opacity: 0.85 !important;
 }
 
+/* === Paragraph spacing === */
+.msg-mkdn-container p {
+    margin: 0.2rem 0 !important;
+}
 
-/* ===== BUTTONS CLEAN ===== */
+/* === Timestamp styling === */
+.msg-mkdn-container small {
+    display: block !important;
+    font-size: 0.75rem !important;
+    opacity: 0.6 !important;
+    margin-top: 0.25rem !important;
+}
 
-.ant-btn {
-    border-radius: 50% !important;
+/* === Preserve links inside messages === */
+.msg-mkdn-container a {
+    color: #007aff !important;
+    text-decoration: underline !important;
+}
+
+/* === Optional: rounded corners for first/last message in a block === */
+.ant-list-item-meta-description .msg-mkdn-container:first-child {
+    border-top-left-radius: 18px !important;
+    border-top-right-radius: 18px !important;
+}
+
+.ant-list-item-meta-description .msg-mkdn-container:last-child {
+    border-bottom-left-radius: 18px !important;
+    border-bottom-right-radius: 18px !important;
 }
