@@ -1,167 +1,227 @@
-/* GyaruGangsta APPLE MESSAGES THEME
-   Apple Messages aesthetic */
-
-/* =========================================
-   1. GLOBAL VARIABLES (Apple Messages PALETTE)
-========================================= */
-
+/* ==========================================================================
+   ROOT VARIABLES / COLORS
+   ========================================================================== */
 :root {
-  --msn-bg: #1E3A5F;
-  --msn-bg-gradient: linear-gradient(180deg, #1E4E79 0%, #0D2840 100%);
-  --msn-bubble-received: linear-gradient(180deg, #5DA9E9 0%, #2F80C1 100%);
-  --msn-bubble-sent: linear-gradient(180deg, #3C8FD9 0%, #1F6FB2 100%);
-  --msn-text: #FFFFFF;
-  --msn-text-light: #E6F2FF;
-  --msn-meta: #CFE6FF;
-  --msn-accent: #7FBA00;
-  --msn-accent-orange: #FF8C00;
-  --msn-border: #1C5C96;
-  --msn-radius: 8px;
-  --msn-font: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  --main-color: #06c;
+  --button-color: #7C0818;
+  --button-hover-color: #912736;
+  --disabled-color: #464552;
+
+  --almost-black-color: #151114;
+  --lighter-almost-black: #2e272c;
+  --almost-white-color: #E6E4EA;
+  --highlight-color: #F9861C;
+
+  --cai-bg-color: #1B1C1E;
+  --webp-hover-color: #6abd16;
+  --webp-logo-color: #2f6101;
+  --characloud-logo-bg-color: #2a2939;
+  --characloud-logo-color: rgba(174, 225, 134, 100);
+  --agnaistic-logo-color: rgba(23, 23, 23, 100);
+  --risu-logo-color: rgba(76, 134, 194, 100);
+
+  --dark-token-text: #4b5563;
+  --dark-mode-text: #D1D5DB;
+  --color-prettylights-syntax-markup-bold: #464552;
+  --subdued-mars: #471847;
+  --bright-mars: #983498;
+
+  --background-deep-alpha: rgb(36, 37, 37, 0.94);
+  --background-shallow-alpha: rgb(219, 218, 218, 0.9);
+  --background-shallow-solid: rgb(219, 218, 218, 1);
+
+  --ribbon-color: rgb(29, 37, 60);
+  --bright-border: #3c38a8;
+  --bright-icon: #3C74A6;
+  --dark-background-color: #001529;
+  --opposite-color: white;
+  --quote-color: #e5e0d8;
+  --light-background-color: #DBDADA;
+  --dark-primary-color: #3c38a8;
+  --light-primary-color: #3c38a8;
+  --dark-header-color: #C74900;
+  --light-header-color: #DBDADA;
+
+  --message-font-size: 1rem;
+  --message-line-height: 1.5;
 }
 
-/* =========================================
-   2. MESSAGE ROW RESET
-========================================= */
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+.font-size-message {
+  font-size: var(--message-font-size) !important;
+  line-height: var(--message-line-height) !important;
+}
+.text-definitely-white { color: #fff !important; }
+.text-definitely-cyan { color: #006d75 !important; }
+.text-gray-800 { color: rgb(31 41 55 / var(--tw-text-opacity)); }
+.text-gray-900 { color: rgb(17 24 39 / var(--tw-text-opacity)); }
+.quote-color { color: var(--quote-color); }
 
-.ant-list-item.alpha-background,
-.message-full {
-  background: transparent !important;
-  border: none !important;
-  overflow: visible !important;
+/* ==========================================================================
+   LAYOUT / GRID
+   ========================================================================== */
+.chub-drawer-body {
+  height: 100vh !important;
+  width: 100vw !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  max-width: 100vw !important;
+  min-width: 100vw !important;
 }
 
-.ant-list-item-meta {
-  display: flex !important;
-  align-items: flex-start !important;
-  width: 100% !important;
+.col-span-1 { grid-column: span 1 / span 1; }
+.col-span-2 { grid-column: span 2 / span 2; }
+.col-span-3 { grid-column: span 3 / span 3; }
+.col-span-4 { grid-column: span 4 / span 4; }
+.col-span-5 { grid-column: span 5 / span 5; }
+.col-span-6 { grid-column: span 6 / span 6; }
+.col-span-7 { grid-column: span 7 / span 7; }
+.col-span-8 { grid-column: span 8 / span 8; }
+.col-span-12 { grid-column: span 12 / span 12; }
+.col-span-full { grid-column: 1 / -1; }
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.bg-button-color {
+  background-color: var(--button-color) !important;
+}
+.bg-button-color:hover:not([disabled]) {
+  background-color: var(--button-hover-color) !important;
+  color: var(--highlight-color);
+}
+.bg-button-color:disabled { background-color: var(--disabled-color) !important; }
+.bg-button-color-hover:hover { background-color: var(--button-color); }
+.subscription-button {
+  background-color: var(--subdued-mars) !important;
+}
+.subscription-button:hover:not([disabled]) {
+  background-color: var(--bright-mars) !important;
+  cursor: pointer;
+}
+.yellow-button {
+  color: var(--highlight-color) !important;
+  background-color: var(--highlight-color);
 }
 
-/* =========================================
-   3. USERNAME / SENDER NAME
-========================================= */
+/* ==========================================================================
+   MESSAGE / CHAT STYLING
+   ========================================================================== */
+.message-full:hover .message-control-buttons { opacity: 100%; }
+.message-control-buttons { opacity: 0%; }
+.message-control-buttons:hover,
+.message-control-buttons:focus { opacity: 100%; }
 
-h4.ant-list-item-meta-title a {
-  transform: translateY(10px);
+.message-title svg { max-height: 30px; }
+.message-title div { max-height: 30px; height: 30px; }
+.message-title .ant-btn {
+  padding: 0;
+  margin-left: .15rem;
+  max-height: 30px;
+  max-width: 30px !important;
+  width: 30px !important;
+  min-width: 30px !important;
 }
 
-.ant-list-item-meta-title,
-.ant-list-item-meta-title .light-over,
-.light-over {
-  font-size: 0.85em !important;
-  color: #FFFFFF !important;
-  font-weight: 600 !important;
-  margin-bottom: 4px !important;
-  margin-left: 4px !important;
-  line-height: 1.2 !important;
-  font-family: var(--msn-font) !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4) !important;
+.message-details {
+  border-width: 10px;
+  border-color: #000;
+  position: absolute;
+  background-color: #282828;
+  border-radius: 2rem;
+  height: 20vh;
+  bottom: 1.5rem;
+  left: 2%;
+  padding: 1.5em;
+  width: 96%;
 }
 
-.message-title,
-.flex.message-title {
-  flex-wrap: wrap !important;
+/* ==========================================================================
+   CHAT ENTRY / META
+   ========================================================================== */
+.lk-chat-entry { display: flex; flex-direction: column; gap: .25rem; margin: 0 .25rem; }
+.lk-chat-entry .lk-meta-data {
+  font-size: .75rem;
+  color: var(--dark-token-text);
+  white-space: nowrap;
+  padding: 0 .3rem;
+  display: flex;
 }
-
-a.light-over.font-size-message,
-.message-title a.light-over {
-  max-width: none !important;
-  text-overflow: unset !important;
-  overflow: visible !important;
-  white-space: normal !important;
+.lk-chat-entry .lk-meta-data .lk-participant-name { margin-top: 1rem; }
+.lk-chat-entry .lk-meta-data .lk-timestamp { margin-left: auto; align-self: flex-end; }
+.lk-chat-entry .lk-edit-button {
+  background: none;
+  float: right;
+  margin: 0;
+  padding: 0 .25rem;
+  border-radius: 0;
+  font-size: 12px;
 }
-
-/* =========================================
-   4. MESSAGE BUBBLES (BLUE MSN STYLE)
-========================================= */
-
-.ant-list-item-meta-description {
-  background: var(--msn-bubble-received) !important;
-  color: var(--msn-text) !important;
-  border-radius: var(--msn-radius) !important;
-  border: 1px solid var(--msn-border) !important;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.15),
-              0 1px 3px rgba(0,0,0,0.2) !important;
-  font-size: 0.9em !important;
-  line-height: 1.5 !important;
-  font-family: var(--msn-font) !important;
-  padding: 8px 12px !important;
-  max-width: 85% !important;
-  width: fit-content !important;
-  opacity: 0;
-  animation: msnFade 0.15s ease-out forwards;
+.lk-chat-entry .lk-message-body {
+  display: inline-block;
+  border-radius: 15px;
+  padding: .25rem .75rem;
+  word-break: break-word;
+  width: fit-content;
+  max-width: calc(100% - 32px);
 }
+.lk-chat-entry[data-lk-message-origin=local] .lk-message-body { background-color: var(--background-shallow-solid); }
+.lk-chat-entry[data-lk-message-origin=remote] .lk-message-body { background-color: var(--bright-mars); }
+.lk-chat-entry a { text-decoration: underline; color: inherit; }
 
-.ant-list-item-meta-description *,
-.ant-list-item-meta-description p,
-.ant-list-item-meta-description span,
-.ant-list-item-meta-description div {
-  color: #FFFFFF !important;
-  font-family: var(--msn-font) !important;
+/* ==========================================================================
+   MISC / OVERRIDES
+   ========================================================================== */
+.text-center { text-align: center; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+.font-bold { font-weight: 700; }
+.font-light { font-weight: 100; color: gray; }
+.p-0 { padding: 0; }
+.p-0\.5 { padding: .125rem; }
+.p-1\.5 { padding: .375rem; }
+.p-2\.5 { padding: .625rem; }
+.p-4 { padding: 1rem; }
+.p-5 { padding: 1.25rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+.p-10 { padding: 2.5rem; }
+.p-12 { padding: 3rem; }
+
+/* ==========================================================================
+   TOOLTIP
+   ========================================================================== */
+.tooltip { position: relative; display: inline-block; width: auto !important; }
+.tooltip .tooltiptext {
+  top: 60px;
+  left: 50%;
+  padding-top: 100px;
+  margin-left: -80px;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 9999999;
 }
-
-/* Sent message bubble */
-
-.ant-list-item-meta-description.user-message,
-.message-full.user .ant-list-item-meta-description {
-  background: var(--msn-bubble-sent) !important;
-  border: 1px solid #154E80 !important;
+.tooltip .tooltipabovetext {
+  bottom: 100%;
+  right: 50%;
+  margin-right: -80px;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 9999999;
 }
-
-/* =========================================
-   6. ANIMATIONS
-========================================= */
-
-@keyframes msnFade {
-  0% { opacity: 0; transform: translateY(4px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* =========================================
-   7. AVATAR
-========================================= */
-
-.ant-list-item-meta-avatar img,
-.ant-list-item-meta-avatar .ant-avatar {
-  border-radius: 12px !important;
-  aspect-ratio: 1 / 1 !important;
-  object-fit: cover !important;
-  padding: 6px !important;
-  background: linear-gradient(to top, #3D9140 0%, #4CAF50 100%) !important;
-  box-shadow: 0 3px 10px rgba(76,175,80,0.5) !important;
-}
-
-/* =========================================
-   8. INPUT AREA
-========================================= */
-
-.ant-layout-footer form {
-  background: linear-gradient(180deg, #FFFFFF 0%, #E8F4FC 100%) !important;
-  border: 1px solid #A8C8E8 !important;
-  border-radius: var(--msn-radius) !important;
-  padding: 6px 10px !important;
-}
-
-.ant-layout-footer textarea.ant-input {
-  background: transparent !important;
-  border: none !important;
-  color: #333 !important;
-  font-family: var(--msn-font) !important;
-}
-
-/* =========================================
-   9. BACKGROUND IMAGE
-========================================= */
-
-div.abs-100-dvh:not(.ant-row) {
-  background-image:
-    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-    url(https://avatars.charhub.io/avatars/uploads/images/gallery/file/84feee61-707d-4955-9426-5d8591551cca/046b4004-ee5e-42fa-b7ca-a3dc417f739f.webp) !important;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-}
+.tooltip:hover .tooltipabovetext { visibility: visible; width: 140px; height: auto; padding-left: .5rem; padding-right: .5rem; }
