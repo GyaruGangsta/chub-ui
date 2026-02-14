@@ -1,52 +1,52 @@
-/* ==========================================================================
-   GLOBAL VARIABLES
-   ========================================================================== */
+/*==============================
+=          Root Variables       =
+===============================*/
 :root {
-  --apple-text: #FFFFFF; /* text color for messages */
-  --apple-font: "Arial, sans-serif"; /* font for messages */
-  --main-color: #06c;
-  --button-color: #7C0818;
-  --button-hover-color: #912736;
-  --disabled-color: #464552;
-  --almost-black-color: #151114;
-  --lighter-almost-black: #2e272c;
-  --almost-white-color: #E6E4EA;
-  --highlight-color: #F9861C;
-  --cai-bg-color: #1B1C1E;
-  --webp-hover-color: #6abd16;
-  --webp-logo-color: #2f6101;
-  --characloud-logo-bg-color: #2a2939;
-  --characloud-logo-color: rgba(174, 225, 134, 100);
-  --agnaistic-logo-color: rgba(23, 23, 23, 100);
-  --risu-logo-color: rgba(76, 134, 194, 100);
-  --dark-token-text: #4b5563;
-  --dark-mode-text: #D1D5DB;
-  --color-prettylights-syntax-markup-bold: #464552;
-  --subdued-mars: #471847;
-  --bright-mars: #983498;
-  --background-deep-alpha: rgba(36, 37, 37, 0.94);
-  --background-shallow-alpha: rgba(219, 218, 218, 0.9);
-  --background-shallow-solid: rgba(219, 218, 218, 1);
-  --ribbon-color: rgb(29, 37, 60);
-  --bright-border: #3c38a8;
-  --bright-icon: #3C74A6;
-  --dark-background-color: #001529;
-  --opposite-color: white;
-  --quote-color: #e5e0d8;
-  --light-background-color: #DBDADA;
-  --dark-primary-color: #3c38a8;
-  --light-primary-color: #3c38a8;
-  --dark-header-color: #C74900;
-  --light-header-color: #DBDADA;
-  --message-font-size: 1rem;
-  --message-line-height: 1.5;
+  --apple-main-color: #06c;
+  --apple-button-color: #7C0818;
+  --apple-button-hover-color: #912736;
+  --apple-disabled-color: #464552;
+  --apple-almost-black-color: #151114;
+  --apple-lighter-almost-black: #2e272c;
+  --apple-almost-white-color: #E6E4EA;
+  --apple-highlight-color: #F9861C;
+  --apple-cai-bg-color: #1B1C1E;
+  --apple-webp-hover-color: #6abd16;
+  --apple-webp-logo-color: #2f6101;
+  --apple-characloud-logo-bg-color: #2a2939;
+  --apple-characloud-logo-color: rgba(174, 225, 134, 1);
+  --apple-agnaistic-logo-color: rgba(23, 23, 23, 1);
+  --apple-risu-logo-color: rgba(76, 134, 194, 1);
+  --apple-dark-token-text: #4b5563;
+  --apple-dark-mode-text: #D1D5DB;
+  --apple-color-prettylights-syntax-markup-bold: #464552;
+  --apple-subdued-mars: #471847;
+  --apple-bright-mars: #983498;
+  --apple-background-deep-alpha: rgba(36,37,37,0.94);
+  --apple-background-shallow-alpha: rgba(219,218,218,0.9);
+  --apple-background-shallow-solid: rgba(219,218,218,1);
+  --apple-ribbon-color: rgb(29,37,60);
+  --apple-bright-border: #3c38a8;
+  --apple-bright-icon: #3C74A6;
+  --apple-dark-background-color: #001529;
+  --apple-light-background-color: #DBDADA;
+  --apple-dark-primary-color: #3c38a8;
+  --apple-light-primary-color: #3c38a8;
+  --apple-dark-header-color: #C74900;
+  --apple-light-header-color: #DBDADA;
+  --apple-message-font-size: 1rem;
+  --apple-message-line-height: 1.5;
+
+  /* Message-specific */
+  --apple-font: "Arial", sans-serif;
+  --apple-text: #E6E4EA;
+  --apple-user-bg: #1e1e2f;
+  --apple-bot-bg: #2b2b3f;
 }
 
-/* ==========================================================================
-   MESSAGE / CHAT FONT & BACKGROUND
-   ========================================================================== */
-
-/* Font for message titles (user/bot names) */
+/*==============================
+=        General Message Styles =
+===============================*/
 .ant-list-item-meta-title,
 .ant-list-item-meta-title .light-over,
 .light-over {
@@ -60,10 +60,9 @@
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Message text / content background and styling */
 .ant-list-item-meta-description {
-  background: red !important; /* change as needed */
-  color: var(--apple-text) !important; /* text color for both bot and user messages */
+  background-color: inherit !important; /* will inherit from user/bot */
+  color: var(--apple-text) !important;
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
@@ -77,53 +76,49 @@
   min-height: 0 !important;
   height: auto !important;
   opacity: 0;
-  animation: appleFade 0.15s ease-out forwards;
+  animation: msnFade 0.15s ease-out forwards;
 }
 
-/* Optional fade animation for messages */
-@keyframes appleFade {
+/*==============================
+=       User vs Bot Messages    =
+===============================*/
+.lk-chat-entry[data-lk-message-origin="local"] .lk-message-body {
+  background-color: var(--apple-user-bg) !important;
+  color: var(--apple-text) !important;
+}
+
+.lk-chat-entry[data-lk-message-origin="remote"] .lk-message-body {
+  background-color: var(--apple-bot-bg) !important;
+  color: var(--apple-text) !important;
+}
+
+/*==============================
+=        Message Animations    =
+===============================*/
+@keyframes msnFade {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* ==========================================================================
-   PARTICIPANT TILES & PLACEHOLDERS
-   ========================================================================== */
-.lk-participant-tile,
-.lk-participant-placeholder {
-  border-radius: .375rem !important;
-}
-
-/* ==========================================================================
-   CHAT CONTAINER / HEADER / FORM
-   ========================================================================== */
+/*==============================
+=        Chat Layout & UI       =
+===============================*/
 .lk-chat {
   display: grid;
   grid-template-rows: var(--lk-chat-header-height) 1fr var(--lk-control-bar-height);
   width: clamp(200px, 55ch, 60ch);
-  background-color: var(--lk-bg2);
-  border-left: 1px solid var(--lk-border-color);
+  background-color: var(--apple-dark-background-color);
+  border-left: 1px solid var(--apple-bright-border);
   align-items: end;
 }
 
 .lk-chat-header {
   height: var(--lk-chat-header-height);
-  padding: .75rem;
+  padding: 0.75rem;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.lk-chat-header .lk-close-button {
-  position: absolute;
-  right: 0;
-  transform: translate(-50%);
-  background-color: #0000;
-}
-
-.lk-chat-header .lk-close-button:hover {
-  background-color: var(--lk-control-active-hover-bg);
 }
 
 .lk-chat-messages {
@@ -131,162 +126,122 @@
   width: 100%;
   max-height: 100%;
   flex-direction: column;
-  gap: .25rem;
+  gap: 0.25rem;
   overflow: auto;
 }
 
 .lk-chat-entry {
   display: flex;
   flex-direction: column;
-  gap: .25rem;
-  margin: 0 .25rem;
+  gap: 0.25rem;
+  margin: 0 0.25rem;
 }
 
 .lk-chat-entry .lk-meta-data {
-  font-size: .75rem;
-  color: var(--lk-fg5);
+  font-size: 0.75rem;
+  color: var(--apple-dark-token-text);
   white-space: nowrap;
-  padding: 0 .3rem;
+  padding: 0 0.3rem;
   display: flex;
 }
 
-/* Messages origin styles */
-.lk-chat-entry[data-lk-message-origin=local] .lk-message-body {
-  background-color: var(--lk-bg5);
+.lk-chat-entry .lk-meta-data .lk-participant-name {
+  margin-top: 1rem;
 }
 
-.lk-chat-entry[data-lk-message-origin=remote] .lk-message-body {
-  background-color: var(--lk-accent4);
+.lk-chat-entry .lk-meta-data .lk-timestamp {
+  margin-left: auto;
+  align-self: flex-end;
 }
 
-/* ==========================================================================
-   CONTROL BARS / BUTTONS
-   ========================================================================== */
-.lk-control-bar,
-.lk-agent-control-bar {
-  display: flex;
-  gap: .5rem;
-  align-items: center;
-  justify-content: center;
-  padding: .75rem;
-  border-top: 1px solid var(--lk-border-color);
-  max-height: var(--lk-control-bar-height);
+.lk-chat-entry .lk-edit-button {
+  background: none;
+  float: right;
+  margin: 0;
+  padding: 0 0.25rem;
+  border-radius: 0;
+  font-size: 12px;
 }
 
-/* ==========================================================================
-   TOOLTIPS
-   ========================================================================== */
-.tooltip {
-  position: relative;
+.lk-chat-entry .lk-message-body {
   display: inline-block;
-  width: auto !important;
+  border-radius: 15px;
+  padding: 0.25rem 0.75rem;
+  word-break: break-word;
+  width: fit-content;
+  max-width: calc(100% - 32px);
 }
 
-.tooltip .tooltiptext {
-  top: 60px;
+/*==============================
+=        Toast & Spinner       =
+===============================*/
+.lk-toast {
+  position: fixed;
+  top: 0.75rem;
   left: 50%;
-  padding-top: 100px;
-  margin-left: -80px;
-  visibility: hidden;
-  width: 0px;
-  height: 0px;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 9999999;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--apple-dark-background-color);
+  border: 1px solid var(--apple-bright-border);
+  border-radius: var(--lk-border-radius);
+  box-shadow: var(--lk-box-shadow);
 }
 
-.tooltip .tooltipabovetext {
-  bottom: 100%;
-  right: 50%;
-  margin-right: -80px;
-  visibility: hidden;
-  width: 0px;
-  height: 0px;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 9999999;
+.lk-spinner {
+  animation: lk-rotate 2s infinite linear;
 }
 
-.tooltip:hover .tooltipabovetext {
-  visibility: visible;
-  width: 140px;
+@keyframes lk-rotate {
+  0% { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
+}
+
+/*==============================
+=        Prejoin Video         =
+===============================*/
+.lk-prejoin {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  margin-inline: auto;
+  background-color: var(--apple-dark-background-color);
+  width: min(100%,480px);
+}
+
+.lk-prejoin .lk-video-container {
+  position: relative;
+  width: 100%;
   height: auto;
-  padding-left: .5rem;
-  padding-right: .5rem;
+  aspect-ratio: 16/10;
+  background-color: #000;
+  border-radius: var(--lk-border-radius);
+  overflow: hidden;
 }
 
-/* ==========================================================================
-   GRID / LAYOUT HELPERS
-   ========================================================================== */
-.col-span-1 { grid-column: span 1 / span 1; }
-.col-span-2 { grid-column: span 2 / span 2; }
-.col-span-3 { grid-column: span 3 / span 3; }
-.col-span-4 { grid-column: span 4 / span 4; }
-.col-span-5 { grid-column: span 5 / span 5; }
-.col-span-6 { grid-column: span 6 / span 6; }
-.col-span-7 { grid-column: span 7 / span 7; }
-.col-span-8 { grid-column: span 8 / span 8; }
-.col-span-12 { grid-column: span 12 / span 12; }
-.col-span-full { grid-column: 1 / -1; }
+.lk-prejoin .lk-video-container video[data-lk-facing-mode=user] {
+  transform: rotateY(180deg);
+}
 
-/* ==========================================================================
-   COLORS / BACKGROUNDS / TEXT HELPERS
-   ========================================================================== */
-.text-center { text-align: center; }
+/*==============================
+=        Misc Helpers          =
+===============================*/
+.text-center { text-align: center !important; }
 .text-left { text-align: left !important; }
 .text-right { text-align: right !important; }
-.text-green-400 { color: rgb(74 222 128) !important; }
-.text-green-500 { color: rgb(34 197 94) !important; }
-.text-green-600 { color: rgb(22 163 74) !important; }
-.text-green-700 { color: rgb(21 128 61) !important; }
-.text-indigo-50 { color: rgb(238 242 255) !important; }
-.text-indigo-100 { color: rgb(224 231 255) !important; }
-.text-indigo-200 { color: rgb(199 210 254) !important; }
-.text-indigo-300 { color: rgb(165 180 252) !important; }
-.text-indigo-400 { color: rgb(129 140 248) !important; }
-.text-indigo-500 { color: rgb(99 102 241) !important; }
-.text-indigo-600 { color: rgb(79 70 229) !important; }
-.text-indigo-700 { color: rgb(67 56 202) !important; }
-.text-indigo-800 { color: rgb(55 48 163) !important; }
-.text-indigo-900 { color: rgb(49 46 129) !important; }
+.font-light { font-weight: 100; color: gray; }
+.rounded-md { border-radius: 0.375rem; }
 
-/* ==========================================================================
-   SPACING HELPERS
-   ========================================================================== */
-.p-0 { padding: 0; }
-.p-0\.5 { padding: 0.125rem; }
-.p-1\.5 { padding: 0.375rem; }
-.p-2\.5 { padding: 0.625rem; }
-.p-4 { padding: 1rem; }
-.p-5 { padding: 1.25rem; }
-.p-6 { padding: 1.5rem; }
-.p-8 { padding: 2rem; }
-.p-10 { padding: 2.5rem; }
-.p-12 { padding: 3rem; }
+.select-none { -webkit-user-select: none; user-select: none; }
+.cursor-grab { cursor: grab; }
+.cursor-grabbing { cursor: grabbing; }
 
-.mr-1 { margin-right: .25rem; }
-.mr-1\.5 { margin-right: .375rem; }
-.mr-12 { margin-right: 3rem; }
-.mr-16 { margin-right: 4rem; }
-
-.ml-3 { margin-left: .75rem; }
-.ml-4 { margin-left: 1rem; }
-.ml-5 { margin-left: 1.25rem; }
-.ml-6 { margin-left: 1.5rem; }
-.ml-8 { margin-left: 2rem; }
-
-.-mt-0 { margin-top: 0; }
-.-mt-0\.25 { margin-top: -.0625rem; }
-.-mt-0\.5 { margin-top: -.125rem; }
-.-mt-1 { margin-top: -.25rem; }
-.-mt-1\.5 { margin-top: -.375rem; }
-
-.-mb-0\.5 { margin-bottom: -.125rem; }
-.-mb-1 { margin-bottom: -.25rem; }
+.opacity-100 { opacity: 1 !important; }
+.transition-all { transition-property: all; }
+.duration-300 { transition-duration: 0.3s; }
+.ease-in-out { transition-timing-function: cubic-bezier(.4,0,.2,1); }
