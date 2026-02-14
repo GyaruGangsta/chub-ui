@@ -63,7 +63,7 @@
 .ant-list-item-meta-description {
 /* This is the color of the bubble background */
   background-color: #007AFF !important; /* will inherit from user/bot */
-  color: var(--apple-text) !important;
+  color:#E6E4EA !important;
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
